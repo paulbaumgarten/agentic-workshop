@@ -9,11 +9,10 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenCode via official installer
-RUN curl -fsSL https://opencode.ai/install | bash
-
-# Add OpenCode to PATH
-ENV PATH="/root/.opencode/bin:${PATH}"
+# Install OpenCode as root and move binary system-wide
+RUN curl -fsSL https://opencode.ai/install | bash && \
+    mv /root/.opencode/bin/opencode /usr/local/bin/opencode && \
+    chmod +x /usr/local/bin/opencode
 
 # Set working directory
 WORKDIR /workspace

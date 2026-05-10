@@ -52,3 +52,34 @@ python app.py
 # Click Open in Browser
 ```
 
+## Test OpenCode
+
+* Start opencode
+
+```
+opencode
+```
+
+* Connect to your provider
+
+```
+/connect
+```
+
+* Select your provider, and login or enter an API key as appropriate
+
+Test the connection by asking for it to say hello in a humourous manner.
+
+When you are ready to test it working agentically with your dev environment...
+
+```
+there is a Flask app located in /app/app.py. Add a hello world HTML file served at /hello that has a large font, is centered vertially and horizontally, dark mode and mobile friendly.
+```
+
+## Test Flask app
+
+```
+cd app
+flask --app app.py --debug run --host=0.0.0.0 --port=5000
+```
+

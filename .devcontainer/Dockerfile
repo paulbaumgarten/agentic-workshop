@@ -5,19 +5,20 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     curl \
     git \
-    build-essential
+    build-essential \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Node (required for OpenCode CLI if npm-based)
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
+# Install OpenCode via official installer
+RUN curl -fsSL https://opencode.ai/install | bash
 
-# Install OpenCode CLI globally
-RUN npm install -g opencode-cli
+# Add OpenCode to PATH
+ENV PATH="/root/.opencode/bin:${PATH}"
 
 # Set working directory
 WORKDIR /workspace
 
-# Install common Python packages globally
+# Install Python dependencies globally
 RUN pip install --no-cache-dir \
     flask \
     psycopg2-binary \

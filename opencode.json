@@ -1,5 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "name": "agentic-workshop",
+  "version": "1.0.0",
+  "providers": {
+    "openai": {
+      "model": "assistant",
+      "apiKey": "${POE_API_KEY}"
+    }
+  },
+  "agents": {
+    "default": {
+      "provider": "Poe",
+      "instructions": "You are a helpful coding assistant."
+    }
+  },
   "permission": {
     "*": "ask",
     "edit": "ask",
@@ -23,13 +37,7 @@
       "touch": true,
       "date": true,
       "echo": true,
-      "printf": true,
-      "wc -l": true,
-      "wc -c": true,
-      "wc -w": true,
-      "ls -la": true,
-      "ls -lh": true,
-      "ls -R": true
+      "printf": true
     },
     "git": "deny"
   },
@@ -39,7 +47,7 @@
   "scope": {
     "read": {
       "allow": ["${PROJECT_DIR}/**"],
-      "deny": ["**", ".env"]
+      "deny": [".env"]
     }
   }
 }

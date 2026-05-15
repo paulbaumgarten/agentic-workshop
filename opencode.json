@@ -1,53 +1,51 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "name": "agentic-workshop",
-  "version": "1.0.0",
-  "providers": {
-    "openai": {
-      "model": "assistant",
-      "apiKey": "${POE_API_KEY}"
+  "provider": {
+    "poe-custom": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Poe",
+      "options": {
+        "baseURL": "https://api.poe.com/v1",
+        "apiKey": "${POE_API_KEY}"
+      }
     }
   },
-  "agents": {
+  "agent": {
     "default": {
-      "provider": "Poe",
+      "provider": "poe-custom",
+      "model": "DeepSeek-V3.2",
       "instructions": "You are a helpful coding assistant."
     }
   },
   "permission": {
     "*": "ask",
+    "read": "allow",
     "edit": "ask",
     "bash": {
-      "*": "ask",
-      "ls": true,
-      "cat": true,
-      "pwd": true,
-      "cd": true,
-      "find": true,
-      "grep": true,
-      "head": true,
-      "tail": true,
-      "wc": true,
-      "sort": true,
-      "uniq": true,
-      "tee": true,
-      "mkdir": true,
-      "cp": true,
-      "mv": true,
-      "touch": true,
-      "date": true,
-      "echo": true,
-      "printf": true
+      "ls": "allow",
+      "cat": "allow",
+      "pwd": "allow",
+      "cd": "allow",
+      "find": "allow",
+      "grep": "allow",
+      "head": "allow",
+      "tail": "allow",
+      "wc": "allow",
+      "sort": "allow",
+      "uniq": "allow",
+      "tee": "allow",
+      "mkdir": "allow",
+      "cp": "allow",
+      "mv": "allow",
+      "touch": "allow",
+      "date": "allow",
+      "echo": "allow",
+      "printf": "allow"
     },
-    "git": "deny"
+    "git": "deny",
+    "WebFetch": "ask"
   },
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**", ".opencode/**"]
-  },
-  "scope": {
-    "read": {
-      "allow": ["${PROJECT_DIR}/**"],
-      "deny": [".env"]
-    }
   }
 }

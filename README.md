@@ -43,10 +43,6 @@ psql postgresql://postgres:postgres@postgres:5432/workshopdb
 # Test Python can talk to the DB
 python scripts/check_db.py
 
-# Test the Flask app
-cd app
-python app.py
-
 # Codespaces will pop up:
 # “Port 5000 forwarded”
 # Click Open in Browser
@@ -76,7 +72,7 @@ When you are ready to test it working agentically with your dev environment...
 there is a Flask app located in /app/app.py. Add a hello world HTML file served at /hello that has a large font, is centered vertially and horizontally, dark mode and mobile friendly.
 ```
 
-## Test Flask app
+## Run application
 
 ```
 cd app
